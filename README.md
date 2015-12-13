@@ -3,7 +3,7 @@
 
 All data in this repository is already cloned in the EBS of the AMI instance:
 
-W205-juanjo_lucas_saad (public; search by its name of by Owner: 298522642522)
+**W205-juanjo_lucas_saad-2** (public; search by its name of by Owner: 298522642522)
 
 After launching that instance, and to replicate part of this project:
 
