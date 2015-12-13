@@ -12,21 +12,20 @@ The instance also contains some of the data  we stored (because the EBS those da
 
 All the variables accessible from the API (for each county in the U.S.) are described [here](http://api.census.gov/data/2013/acs5/profile/variables.html). The variables we've retrieved (apart from the county and the state) are:
 
-seriesDescList = ["jobs_retail","jobs_it","jobs_finance","job_research","jobs_education","jobs_public","housing_cost_own","housing_cost_rent","pop_tot","pop_20_24","pop_25_34"]
 + Jobs -- Civilian employed population 16 years and over in:
-    + Retail trade
-    + Information
-    + Finance and insurance, and real estate and rental and leasing
-    + Professional, scientific, and management, and administrative and waste management services
-    + Educational services, and health care and social assistance
-    + Public administration
+    + Retail trade (`jobs_retail`)
+    + Information (`jobs_it`)
+    + Finance and insurance, and real estate and rental and leasing (`jobs_finance`)
+    + Professional, scientific, and management, and administrative and waste management services (`jobs_research`)
+    + Educational services, and health care and social assistance (`jobs_education`)
+    + Public administration (`jobs_public`)
 + Monthly costs:
-    + Selected Monthly Owner Costs (SMOC) of housing units with a mortgage: median (dollars)
-    + Gross rent of occupied units (paying rent): median (dollars)
+    + Selected Monthly Owner Costs (SMOC) of housing units with a mortgage: median (dollars) (`housing_cost_own`)
+    + Gross rent of occupied units (paying rent): median (dollars) (`housing_cost_rent`)
 + Population:
-    + Total
-    + 20 to 24 years
-    + 25 to 34 years
+    + Total (`pop_tot`)
+    + 20 to 24 years (`pop_20_24`)
+    + 25 to 34 years (`pop_25_34`)
 
 After launching that instance (remember to select at least t3.medium, and to set ports 22 for SSH, and 50070, 10000, 4040, 8080, 8088, and 8020 for TCP):
 
