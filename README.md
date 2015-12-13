@@ -8,4 +8,5 @@ W205-juanjo_lucas_saad (public; search by its name of by Owner: 298522642522)
 After launching that instance, and to replicate part of this project:
 
 1. Go to `cd /data/w205/W205_final` (where the data in this repository are located)
-2. Run `./scripts/setup.sh`
+2. Go to `cd scripts` (where the scripts to replicate the project are)
+2. Run `./setup.sh`
