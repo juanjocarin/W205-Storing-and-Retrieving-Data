@@ -1,4 +1,4 @@
-export SPARK_HOME="/usr/lib/spark". Now
+export SPARK_HOME="/usr/lib/spark"
 
 # Run Python script to get data from Census API
 python ../api/census.py
@@ -20,4 +20,4 @@ hive -f /data/w205/W205_final/hive/census.sql
 
 # Check that the new DB has been created
 hive -S -e 'select * from census limit 10'
-hive -S -e 'select * from census_ranks limit 10'
+#hive -S -e 'select * from census_ranks limit 10'
