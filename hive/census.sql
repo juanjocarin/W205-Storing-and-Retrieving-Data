@@ -20,6 +20,7 @@ CREATE TABLE CENSUS(
 		JOBS_RESEARCH int,
 		JOBS_PUBLIC int,
 		JOBS_EDUCATION int,
+		JOBS_FINANCE int,
 		HOUSING_COST_OWN int,
 		HOUSING_COST_RENT int,
 		POP_TOT int,
@@ -58,6 +59,10 @@ SELECT
 		WHEN SERIES_DESC = "jobs_education" THEN VALUE
 		ELSE 0
 	END) AS jobs_education,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_finance" THEN VALUE
+		ELSE 0
+	END) AS jobs_finance,
 	MAX(CASE 
 		WHEN SERIES_DESC = "housing_cost_own" THEN VALUE
 		ELSE 0
