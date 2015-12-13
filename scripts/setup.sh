@@ -11,6 +11,8 @@ EOF
 
 # Create the DB
 hive -f /data/w205/W205_final/hive/census.sql
+hive -f /data/w205/W205_final/hive/census_ranks.sql
 
 # Check that the new DB has been created
 hive -S -e 'select * from census limit 10'
+hive -S -e 'select * from census_ranks limit 10'
