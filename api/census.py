@@ -42,6 +42,6 @@ seriesDescList = ["jobs_retail","jobs_it","jobs_finance","job_research",
     "jobs_education","jobs_public","housing_cost_own","housing_cost_rent",
     "pop_tot","pop_20_24","pop_25_34"]
 
-for i in range(1,len(seriesList)):
+for i in range(len(seriesList)):
     data1 = fetch_census_data(params1, seriesList[i], seriesDescList[i])
     create_census_datafile(data1[1:], seriesDescList[i], i)

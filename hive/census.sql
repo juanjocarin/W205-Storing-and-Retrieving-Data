@@ -3,7 +3,7 @@ CREATE EXTERNAL TABLE STG_CENSUS (
         COUNTY varchar(100),
         STATE varchar(100),
         SERIES_DESC varchar(100),
-        VALUE float
+        VALUE int
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '\t'
@@ -15,7 +15,7 @@ CREATE TABLE CENSUS(
         COUNTY STRING,
         STATE STRING,
         SERIES_DESC STRING,
-        VALUE FLOAT
+        VALUE INT
 )
 COMMENT 'CENSUS Data'
 ROW FORMAT DELIMITED
