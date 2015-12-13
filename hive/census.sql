@@ -3,7 +3,7 @@ CREATE EXTERNAL TABLE STG_CENSUS (
         COUNTY varchar(100),
         STATE varchar(100),
         SERIES_DESC varchar(100),
-        VALUE int
+        VALUE float
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '\t'
@@ -14,8 +14,15 @@ DROP TABLE CENSUS;
 CREATE TABLE CENSUS(
         COUNTY STRING,
         STATE STRING,
-        SERIES_DESC STRING,
-        VALUE INT
+		JOBS_RETAIL float,
+		JOBS_IT float,
+		JOBS_RESEARCH float,
+		JOBS_PUBLIC float,
+		JOBS_EDUCATION float,
+		HOUSING_COST_OWN float,
+		HOUSING_COST_RENT float,
+		POP_TOT float,
+		POP_YOUNG float
 )
 COMMENT 'CENSUS Data'
 ROW FORMAT DELIMITED
@@ -24,8 +31,44 @@ STORED AS ORC;
 
 INSERT OVERWRITE TABLE CENSUS
 SELECT
-COUNTY,
-STATE,
-SERIES_DESC,
-VALUE
-FROM STG_CENSUS;
+	COUNTY,
+	STATE,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_retail" THEN VALUE
+		ELSE 0
+	END) AS jobs_retail,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_it" THEN VALUE
+		ELSE 0
+	END) AS jobs_it,
+	MAX(CASE 
+		WHEN SERIES_DESC = "job_research" THEN VALUE
+		ELSE 0
+	END) AS jobs_research,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_public" THEN VALUE
+		ELSE 0
+	END) AS jobs_public,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_education" THEN VALUE
+		ELSE 0
+	END) AS jobs_education,
+	MAX(CASE 
+		WHEN SERIES_DESC = "housing_cost_own" THEN VALUE
+		ELSE 0
+	END) AS housing_cost_own,
+	MAX(CASE 
+		WHEN SERIES_DESC = "housing_cost_rent" THEN VALUE
+		ELSE 0
+	END) AS housing_cost_rent,
+	MAX(CASE 
+		WHEN SERIES_DESC = "pop_tot" THEN VALUE
+		ELSE 0
+	END) AS pop_tot,
+	SUM(CASE 
+		WHEN SERIES_DESC = "pop_20_24" THEN VALUE
+		WHEN SERIES_DESC = "pop_25_34" THEN VALUE
+		ELSE 0
+	END) AS pop_young
+FROM STG_CENSUS
+GROUP BY COUNTY,STATE;
