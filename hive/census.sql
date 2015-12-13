@@ -16,6 +16,7 @@ CREATE TABLE CENSUS(
         STATE STRING,
 		JOBS_RETAIL int,
 		JOBS_IT int,
+		JOBS_FINANCE int,
 		JOBS_RESEARCH int,
 		JOBS_PUBLIC int,
 		JOBS_EDUCATION int,
@@ -41,6 +42,10 @@ SELECT
 		WHEN SERIES_DESC = "jobs_it" THEN VALUE
 		ELSE 0
 	END) AS jobs_it,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_finance" THEN VALUE
+		ELSE 0
+	END) AS jobs_finance,
 	MAX(CASE 
 		WHEN SERIES_DESC = "job_research" THEN VALUE
 		ELSE 0
