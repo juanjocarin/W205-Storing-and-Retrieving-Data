@@ -3,7 +3,7 @@
 
 All the scripts data in this repository is already cloned in the EBS of the AMI instance:
 
-**W205-juanjo_lucas_saad-2** (public; search by its name of by Owner: 298522642522)
+**W205-juanjo_lucas_saad** (public; search by its name of by Owner: 298522642522)
 
 The instance also contains some of the data  we stored (because the EBS those data are in is persistent).
 
