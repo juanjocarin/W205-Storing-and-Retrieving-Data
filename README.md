@@ -7,7 +7,26 @@ All the scripts data in this repository is already cloned in the EBS of the AMI 
 
 The instance also contains some of the data  we stored (because the EBS those data are in is persistent).
 
+
 ## Census data
+
+All the variables accessible from the API (for each county in the U.S.) are described [here](http://api.census.gov/data/2013/acs5/profile/variables.html). The variables we've retrieved (apart from the county and the state) are:
+
+seriesDescList = ["jobs_retail","jobs_it","jobs_finance","job_research","jobs_education","jobs_public","housing_cost_own","housing_cost_rent","pop_tot","pop_20_24","pop_25_34"]
++ Jobs -- Civilian employed population 16 years and over in:
+    + Retail trade
+    + Information
+    + Finance and insurance, and real estate and rental and leasing
+    + Professional, scientific, and management, and administrative and waste management services
+    + Educational services, and health care and social assistance
+    + Public administration
++ Monthly costs:
+    + Selected Monthly Owner Costs (SMOC) of housing units with a mortgage: median (dollars)
+    + Gross rent of occupied units (paying rent): median (dollars)
++ Population:
+    + Total
+    + 20 to 24 years
+    + 25 to 34 years
 
 After launching that instance (remember to select at least t3.medium, and to set ports 22 for SSH, and 50070, 10000, 4040, 8080, 8088, and 8020 for TCP):
 
@@ -15,6 +34,14 @@ After launching that instance (remember to select at least t3.medium, and to set
 2. Go to `cd scripts` (where the .sh files scripts to replicate the project are)
 2. Run `./setup.sh`
 
-This script launches a Python program (`./api/census.py`) that retrieves data from the Census API and stores them in another folder in the EBS (`/data/w205/W205_final_storage/census/txt`), in some text files. After that it moves those data to HDFS, and then an SQ: file (`./hive/census.sql`) queries the data and creates a Hive table, that was accessed by Tableau (running `hive --service hiveserver2` in the folder where the table was stored: `/data/w205/W205_final_storage/census/hive`) to generate the visualizations.
+This script:
+
++ launches a Python program (`./api/census.py`) that retrieves data from the Census API and stores them in another folder in the EBS (`/data/w205/W205_final_storage/census/txt`), in some text files.
+    + Alternatively, we created another program (that uses `numpy` and `pandas`) that generates a single text file.
++ After that, the script moves those data to HDFS, and 
++ then an SQL file (`./hive/census.sql`) queries the data and creates a Hive table (changing the schema, grouping population 20 to 34 years, which is more amenable to be interested in jobs), 
+    + We created a more complex query that creates several rankings among counties and states, using windows.
++ that was accessed by Tableau (running `hive --service hiveserver2` in the folder where the table was stored: `/data/w205/W205_final_storage/census/hive`) to generate the visualizations.
+
 
 ## Indeed data
