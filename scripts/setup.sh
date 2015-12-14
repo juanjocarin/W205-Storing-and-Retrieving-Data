@@ -2,7 +2,7 @@ export SPARK_HOME="/usr/lib/spark"
 
 # Run Python script to get data from Census API
 python ../api/census.py
-# Enhanced Python script (no .sql associated)
+# Enhanced Python script (no .sql associated, requires anaconda)
 #/data/anaconda/bin/python ../api/census2.py
 
 # Upload data to HDFS (with user w205)
