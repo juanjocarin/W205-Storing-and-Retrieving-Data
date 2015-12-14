@@ -1,12 +1,13 @@
 # W205 Final Project
 ## Juanjo Carin, Lucas Dan, Saad Padela
 
-All the scripts data in this repository is already cloned in the EBS of the AMI instance:
+All the scripts (and data) in this repository are already cloned in the EBS of the AMI instance:
 
 **W205-juanjo_lucas_saad** (public; search by its name of by Owner: 298522642522)
 
 The instance also contains some of the data  we stored (because the EBS those data are in is persistent).
 
+The scripts can also be found in https://github.com/juanjocarin/W205_final/CODE.md.
 
 ## Census data
 
