@@ -142,4 +142,198 @@ hive -S -e 'select * from census limit 10'
 #hive -S -e 'select * from census_ranks limit 10'
 ```
 
+
 ## SQL
+
+### census.sql
+
+```sql
+DROP TABLE STG_CENSUS;
+CREATE EXTERNAL TABLE STG_CENSUS (
+        COUNTY varchar(100),
+        STATE varchar(100),
+        SERIES_DESC varchar(100),
+        VALUE int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE
+LOCATION '/user/w205/census_data';
+
+DROP TABLE CENSUS;
+CREATE TABLE CENSUS(
+        COUNTY STRING,
+        STATE STRING,
+		JOBS_RETAIL int,
+		JOBS_IT int,
+		JOBS_FINANCE int,
+		JOBS_RESEARCH int,
+		JOBS_PUBLIC int,
+		JOBS_EDUCATION int,
+		JOBS_FINANCE int,
+		HOUSING_COST_OWN int,
+		HOUSING_COST_RENT int,
+		POP_TOT int,
+		POP_YOUNG int
+)
+COMMENT 'CENSUS Data'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS ORC;
+
+INSERT OVERWRITE TABLE CENSUS
+SELECT
+	COUNTY,
+	STATE,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_retail" THEN VALUE
+		ELSE 0
+	END) AS jobs_retail,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_it" THEN VALUE
+		ELSE 0
+	END) AS jobs_it,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_finance" THEN VALUE
+		ELSE 0
+	END) AS jobs_finance,
+	MAX(CASE 
+		WHEN SERIES_DESC = "job_research" THEN VALUE
+		ELSE 0
+	END) AS jobs_research,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_public" THEN VALUE
+		ELSE 0
+	END) AS jobs_public,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_education" THEN VALUE
+		ELSE 0
+	END) AS jobs_education,
+	MAX(CASE 
+		WHEN SERIES_DESC = "jobs_finance" THEN VALUE
+		ELSE 0
+	END) AS jobs_finance,
+	MAX(CASE 
+		WHEN SERIES_DESC = "housing_cost_own" THEN VALUE
+		ELSE 0
+	END) AS housing_cost_own,
+	MAX(CASE 
+		WHEN SERIES_DESC = "housing_cost_rent" THEN VALUE
+		ELSE 0
+	END) AS housing_cost_rent,
+	MAX(CASE 
+		WHEN SERIES_DESC = "pop_tot" THEN VALUE
+		ELSE 0
+	END) AS pop_tot,
+	SUM(CASE 
+		WHEN SERIES_DESC = "pop_20_24" THEN VALUE
+		WHEN SERIES_DESC = "pop_25_34" THEN VALUE
+		ELSE 0
+	END) AS pop_young
+FROM STG_CENSUS
+GROUP BY COUNTY,STATE;
+```
+
+### census_ranks.sql
+
+```sql
+DROP TABLE CENSUS_RANKS;
+CREATE TABLE CENSUS_RANKS(
+        COUNTY STRING,
+        STATE STRING,
+		JOBS_RETAIL float,
+		JOBS_IT float,
+		JOBS_FINANCE float,
+		JOBS_RESEARCH float,
+		JOBS_PUBLIC float,
+		JOBS_EDUCATION float,
+		JOBS_FINANCE float,
+		HOUSING_COST_OWN float,
+		HOUSING_COST_RENT float,
+		POP_TOT float,
+		POP_YOUNG float,
+		pct_young float,
+		jobs_retail_per_young float,
+		jobs_retail_per_young_rank_st int,
+		jobs_retail_per_young_rank_us int,
+		jobs_it_per_young float,
+		jobs_it_per_young_rank_st int,
+		jobs_it_per_young_rank_us int,
+		jobs_finance_per_young float,
+		jobs_finance_per_young_rank_st int,
+		jobs_finance_per_young_rank_us int,
+		jobs_research_per_young float,
+		jobs_research_per_young_rank_st int,
+		jobs_research_per_young_rank_us int,
+		jobs_public_per_young float,
+		jobs_public_per_young_rank_st int,
+		jobs_public_per_young_rank_us int,
+		jobs_education_per_young float,
+		jobs_education_per_young_rank_st int,
+		jobs_education_per_young_rank_us int,
+		jobs_finance_per_young float,
+		jobs_finance_per_young_rank_st int,
+		jobs_finance_per_young_rank_us int,
+		housing_cost_own_rank_st int,
+		housing_cost_own_rank_us int,
+		housing_cost_rent_rank_st int,
+		housing_cost_rent_rank_us int
+)
+COMMENT 'CENSUS Data With Ranks'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS ORC;
+
+INSERT OVERWRITE TABLE CENSUS_RANKS
+SELECT
+	COUNTY,
+	STATE,
+	jobs_retail,
+	jobs_it,
+	jobs_finance,
+	jobs_research,
+	jobs_public,
+	jobs_education,
+	jobs_finance,
+	housing_cost_own,
+	housing_cost_rent,
+	pop_tot,
+	pop_young,
+	pop_young/pop_tot as pct_young,
+	
+	JOBS_RETAIL/POP_YOUNG as JOBS_RETAIL_per_young,
+	RANK() OVER(PARTITION BY STATE ORDER BY JOBS_RETAIL/POP_YOUNG DESC) as JOBS_RETAIL_per_young_rank_st,
+	RANK() OVER(ORDER BY JOBS_RETAIL/POP_YOUNG DESC) as JOBS_RETAIL_per_young_rank_us,
+	
+	JOBS_IT/POP_YOUNG as jobs_it_per_young,
+	RANK() OVER(PARTITION BY STATE ORDER BY JOBS_IT/POP_YOUNG DESC) as jobs_it_per_young_rank_st,
+	RANK() OVER(ORDER BY JOBS_IT/POP_YOUNG DESC) as jobs_it_per_young_rank_us,
+	
+	JOBS_FINANCE/POP_YOUNG as jobs_finance_per_young,
+	RANK() OVER(PARTITION BY STATE ORDER BY JOBS_FINANCE/POP_YOUNG DESC) as jobs_finance_per_young_rank_st,
+	RANK() OVER(ORDER BY JOBS_FINANCE/POP_YOUNG DESC) as jobs_finance_per_young_rank_us,
+	
+	JOBS_RESEARCH/POP_YOUNG as jobs_research_per_young,
+	RANK() OVER(PARTITION BY STATE ORDER BY JOBS_research/POP_YOUNG DESC) as jobs_research_per_young_rank_st,
+	RANK() OVER(ORDER BY JOBS_research/POP_YOUNG DESC) as jobs_research_per_young_rank_us,
+
+	JOBS_PUBLIC/POP_YOUNG as JOBS_PUBLIC_per_young,
+	RANK() OVER(PARTITION BY STATE ORDER BY JOBS_PUBLIC/POP_YOUNG DESC) as JOBS_PUBLIC_per_young_rank_st,
+	RANK() OVER(ORDER BY JOBS_PUBLIC/POP_YOUNG DESC) as JOBS_PUBLIC_per_young_rank_us,
+	
+	JOBS_EDUCATION/POP_YOUNG as JOBS_EDUCATION_per_young,
+	RANK() OVER(PARTITION BY STATE ORDER BY JOBS_EDUCATION/POP_YOUNG DESC) as JOBS_EDUCATION_per_young_rank_st,
+	RANK() OVER(ORDER BY JOBS_EDUCATION/POP_YOUNG DESC) as JOBS_EDUCATION_per_young_rank_us,
+	
+	JOBS_FINANCE/POP_YOUNG as JOBS_FINANCE_per_young,
+	RANK() OVER(PARTITION BY STATE ORDER BY JOBS_FINANCE/POP_YOUNG DESC) as JOBS_FINANCE_per_young_rank_st,
+	RANK() OVER(ORDER BY JOBS_FINANCE/POP_YOUNG DESC) as JOBS_FINANCE_per_young_rank_us,
+				
+	RANK() OVER(PARTITION BY STATE ORDER BY HOUSING_COST_OWN DESC) as housing_cost_own_rank_st,
+	RANK() OVER(ORDER BY HOUSING_COST_OWN DESC) as housing_cost_own_rank_us,
+	
+	RANK() OVER(PARTITION BY STATE ORDER BY HOUSING_COST_RENT DESC) as housing_cost_rent_rank_st,
+	RANK() OVER(ORDER BY HOUSING_COST_RENT DESC) as housing_cost_rent_rank_us
+FROM CENSUS;
+```
+
