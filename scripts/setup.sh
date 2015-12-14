@@ -15,6 +15,7 @@ EOF
 
 # Create the DB
 hive -f /data/w205/W205_final/hive/census.sql
+hive -f /data/w205/W205_final/hive/top_counties.sql
 # More complete query
 #hive -f /data/w205/W205_final/hive/census_ranks.sql
 
