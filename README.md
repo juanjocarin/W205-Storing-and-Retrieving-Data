@@ -7,7 +7,9 @@ All the scripts (and data) in this repository are already cloned in the EBS of t
 
 The instance also contains some of the data  we stored (because the EBS those data are in is persistent).
 
-The scripts can also be found in https://github.com/juanjocarin/W205_final/CODE.md.
+The scripts can also be found in the [CODE.md file](https://github.com/juanjocarin/W205_final/blob/master/CODE.md).
+
+We've also built a website with the most relevant visualizations from Tableau (data extracted in Python from the Census API, uploaded to Hadoop, converted into a Hive table, and accessed by Tableau via a Hive server): **http://juanjocarin.github.io/w205-viz/**
 
 ## Census data
 
