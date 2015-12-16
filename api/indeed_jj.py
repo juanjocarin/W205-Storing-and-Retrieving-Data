@@ -49,7 +49,7 @@ else:
     N = num_results / limit + 1
 
 # Write results into a text file
-f = open('/HD/indeed.txt', 'w')
+f = open('/data/w205/W205_final_storage/indeed2.txt', 'w')
 for i in range(N):
     if i != N-1:
         end = limit*(i+1)-1
