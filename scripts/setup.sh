@@ -1,4 +1,5 @@
 export SPARK_HOME="/usr/lib/spark"
+PATH=$(echo $PATH | sed -e 's;:\?/data/anaconda/bin;;' -e 's;/data/anaconda/bin:\?;;')
 
 # Run Python script to get data from Census API
 python ../api/census.py
