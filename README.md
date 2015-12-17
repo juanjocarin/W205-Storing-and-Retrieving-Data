@@ -2,12 +2,14 @@
 
 #### Juanjo Carin, Lucas Dan, Saad Padela
 
+More detailed documentation can be found in the [PDF report](/W205FinalProject-SaadJuanjoLucas.pdf).
+
 ## Problem Statement
 
 The goal of this project is to help users find out where the most job opportunities exist for a given role (we have focused on data scientist positions), taking information from Indeed, and combine that information with a second data source (Census) to select a location not only based on the number of job opportunities but also on other aspects (we've chosen the average housing cost -- mortgage or rent -- based on the median for each county, but many other aspects could have been considered, thanks to the level of detail of the Census data; some of these other aspects are shown in some Tableau visualizations available at http://juanjocarin.github.io/w205-viz/).
 
 The solution we propose could be further enhanced with many other details, such as letting the user consider other jobs, use more generic query terms, or results based on many other aspects. We have preferred to focus on the scope of this course, trying (with combined data sources) as many technologies as possible (Hadoop, Hive, and, Spark, all used in AWS environment).
-
+c
 ![Results](/images/Results.png)
 
 ## Technologies
@@ -23,7 +25,7 @@ All the scripts (and data) in **this repository** are already cloned in the EBS 
 
 ![AWS AMI instance](/images/AMI_instance.png)
 
-The scripts (only the final versions; all of them, including some preliminary versions, are in the corresponding folders of this repository) can also be found in the [CODE.md file](https://github.com/juanjocarin/W205_final/blob/master/CODE.md).
+The scripts (only the final versions; all of them, including some preliminary versions, are in the corresponding folders of this repository) can also be found in the [CODE.md file](/CODE.md).
 
 The instance also contains some of the data  we stored (because the EBS those data are in is persistent). This way it is not mandatory to run all parts of the `.sh` scripts: you could comment some of their lines, and the others (for example, the one that runs the Spark code to present results) will still work (though with non-updated results).
 
