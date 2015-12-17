@@ -62,3 +62,4 @@ for county_state in data_frame.index:
     cols = list(data_frame.loc[county_state])
     cols = [c_s[0], c_s[1]] + cols
     txtfile.writelines('\t'.join(cols) + '\n')
+

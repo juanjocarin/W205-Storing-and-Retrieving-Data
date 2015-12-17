@@ -9,24 +9,24 @@ params1 = {"get":"NAME,DP03_0040E", "for":"county:*",
 uri1 = 'http://api.census.gov/data/2014/acs5/profile'
 
 params1["get"]
-req = requests.get(uri1, params=params1,
+req = requests.get(uri1, params=params1, 
     headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36"})
 data = req.json()
 
-state_dict = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona',
+state_dict = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 
     'AR': 'Arkansas', 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 
-    'DE': 'Delaware', 'DC': 'District of Columbia', 'FL': 'Florida',
+    'DE': 'Delaware', 'DC': 'District of Columbia', 'FL': 'Florida', 
     'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois', \
-    'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky',
-    'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts',
-    'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri',
-    'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire',
-    'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York',
-    'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio', 'OK': 'Oklahoma',
-    'OR': 'Oregon', 'PA': 'Pennsylvania', 'PR': 'Puerto Rico',
-    'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota',
-    'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont',
-    'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia', 'WI':
+    'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 
+    'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 
+    'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 
+    'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 
+    'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York', 
+    'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio', 'OK': 'Oklahoma', 
+    'OR': 'Oregon', 'PA': 'Pennsylvania', 'PR': 'Puerto Rico', 
+    'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 
+    'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 
+    'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia', 'WI': 
     'Wisconsin', 'WY': 'Wyoming'}
 
 state_dict_2 = {v:k for k,v in state_dict.iteritems()}
@@ -88,7 +88,7 @@ for county_state in counties_states_2:
         # fields.remove('formattedLocation')
         # fields.remove('indeedApply')
         # fields.remove('expired')
-        fields = ['jobkey', 'jobtitle', 'company', 'snippet', 'url', 'date',
+        fields = ['jobkey', 'jobtitle', 'company', 'snippet', 'url', 'date', 
             'city', 'county', 'state', 'latitude', 'longitude']
 
 
@@ -152,3 +152,4 @@ for county_state in counties_states_2:
                         f.writelines('\t'.join(relevant_result) + '\n')
 
 f.close()
+

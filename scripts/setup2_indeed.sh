@@ -11,5 +11,4 @@ hdfs dfs -rm -r /user/w205/indeed_data/*
 hdfs dfs -put /data/w205/W205_final_storage/indeed/txt/* /user/w205/indeed_data
 EOF
 
-# Get combined results from Indeed and Census
 /usr/bin/spark-submit ../api/results.py
