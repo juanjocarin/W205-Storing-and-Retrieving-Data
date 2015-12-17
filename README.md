@@ -19,7 +19,7 @@ The solution we propose could be further enhanced with many other details, such 
 
 All the scripts (and data) in **this repository** are already cloned in the EBS of the **AMI instance**:
 
-**W205-juanjo_lucas_saad** (public; search by its name of by Owner: 298522642522)
+**W205-juanjo_lucas_saad-final** (public; search by its name of by **Owner: 298522642522**)
 
 The scripts (only the final versions; all of them, including some preliminary versions, are in the corresponding folders of this repository) can also be found in the [CODE.md file](https://github.com/juanjocarin/W205_final/blob/master/CODE.md).
 
