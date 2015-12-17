@@ -2,7 +2,7 @@
 
 #### Juanjo Carin, Lucas Dan, Saad Padela
 
-More detailed documentation can be found in the [PDF report](/W205FinalProject-SaadJuanjoLucas.pdf).
+More detailed documentation can be found in the **[PDF report](/W205FinalProject-SaadJuanjoLucas.pdf)**.
 
 ## Problem Statement
 
