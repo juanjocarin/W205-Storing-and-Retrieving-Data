@@ -1,6 +1,19 @@
 # W205 Final Project
 
-### Juanjo Carin, Lucas Dan, Saad Padela
+#### Juanjo Carin, Lucas Dan, Saad Padela
+
+## Problem Statement
+
+The goal of this project is to help users find out where the most job opportunities exist for a given role (we have focused on data scientist positions), taking information from Indeed, and combine that information with a second data source (Census) to select a location not only based on the number of job opportunities but also on other aspects (we've chosen the average housing cost -- mortgage or rent -- based on the median for each county, but many other aspects could have been considered, thanks to the level of detail of the Census data; some of these other aspects are shown in some Tableau visualizations available at http://juanjocarin.github.io/w205-viz/).
+
+The solution we propose could be further enhanced with many other details, such as letting the user consider other jobs, use more generic query terms, or results based on many other aspects. We have preferred to focus on the scope of this course, trying (with combined data sources) as many technologies as possible (Hadoop, Hive, and, Spark, all used in AWS environment).
+
+## Technologies
+
++ Census data: Census API - Python - Haddop HDFS - Hive - Tableau
++ Indeed (plus Census) data: Indeed & Census APIs - Haddop HDFS - Spark - Python
+
+## Instructions
 
 All the scripts (and data) in **this repository** are already cloned in the EBS of the **AMI instance**:
 
@@ -12,7 +25,7 @@ The instance also contains some of the data  we stored (because the EBS those da
 
 We've also built a **website** with the most relevant visualizations from **Tableau** (data extracted in Python from the Census **API**, uploaded to **Hadoop**, converted into a **Hive** table, and accessed by Tableau via a Hive server): **http://juanjocarin.github.io/w205-viz/**
 
-## Census data
+### Census data
 
 All the variables accessible from the **Census API** (for each county in the U.S.) are described [here](http://api.census.gov/data/2013/acs5/profile/variables.html). The variables we've retrieved (apart from the county and the state) are:
 
@@ -47,7 +60,7 @@ This script:
 + that was accessed by Tableau (running `hive --service hiveserver2` in the folder where the table was stored: `/data/w205/W205_final_storage/census/hive`) to generate the visualizations.
 
 
-## Indeed data
+### Indeed data
 
 To replicate this part of the project, **run `./setup2.sh`** (again, in `/data/w205/W205_final/scripts). This script:
 
