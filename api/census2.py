@@ -56,10 +56,9 @@ for i in range(num_categories):
 data_frame = data_frame.transpose()
 data_frame.columns = seriesDescList
 
-txtfile = codecs.open('/data/w205/W205_final_storage/census2.txt', 'w', 'utf-8')
+txtfile = codecs.open('/data/w205/W205_final_storage/census/txt2/census2.txt', 'w', 'utf-8')
 for county_state in data_frame.index:
-    c_s = county_state.decode('utf-8', 'replace').split(',')
+    c_s = county_state.decode('utf-8', 'replace').split(', ')
     cols = list(data_frame.loc[county_state])
     cols = [c_s[0], c_s[1]] + cols
     txtfile.writelines('\t'.join(cols) + '\n')
-
