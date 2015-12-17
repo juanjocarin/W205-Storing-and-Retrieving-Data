@@ -12,8 +12,8 @@ The solution we propose could be further enhanced with many other details, such 
 
 ## Technologies
 
-+ Census data: Census API - Python - Haddop HDFS - Hive - Tableau
-+ Indeed (plus Census) data: Indeed & Census APIs - Haddop HDFS - Spark - Python
++ Census data: Census API - Python - Hadoop HDFS - Hive - Tableau
++ Indeed (plus Census) data: Indeed & Census APIs - Hadoop HDFS - Spark - Python
 
 ## Instructions
 
