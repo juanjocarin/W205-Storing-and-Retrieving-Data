@@ -8,7 +8,7 @@ The goal of this project is to help users find out where the most job opportunit
 
 The solution we propose could be further enhanced with many other details, such as letting the user consider other jobs, use more generic query terms, or results based on many other aspects. We have preferred to focus on the scope of this course, trying (with combined data sources) as many technologies as possible (Hadoop, Hive, and, Spark, all used in AWS environment).
 
-![Results](/Results.png)
+![Results](/images/Results.png)
 
 ## Technologies
 
@@ -20,6 +20,8 @@ The solution we propose could be further enhanced with many other details, such 
 All the scripts (and data) in **this repository** are already cloned in the EBS of the **AMI instance**:
 
 **W205-juanjo_lucas_saad-final** (public; search by its name of by **Owner: 298522642522**)
+
+![AWS AMI instance](/images/AMI_instance.png)
 
 The scripts (only the final versions; all of them, including some preliminary versions, are in the corresponding folders of this repository) can also be found in the [CODE.md file](https://github.com/juanjocarin/W205_final/blob/master/CODE.md).
 
