@@ -1,4 +1,6 @@
-# W205 Final Project
+# W205-Storing and Retrieving Data
+
+## Final Project
 
 #### Juanjo Carin, Lucas Dan, Saad Padela
 
