@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>MIDS W205 Final Project</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>W205 Final Project</h1>
+        <h2>By Juanjo Carin, Lucas Dan, and Saad Padela</h2>
+        <a href="https://github.com/juanjocarin/W205_final" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3><a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualizations from our W205 final project</h3>
+          
+          <p>The following visualizations show insights from the Census data retrieved in our project. Their purpose is to help users select best locations when considering a new position, by the number of opportunities in each location (on a county level), the cost of living there, and the expected competition (of course, we have used proxies for all that variables). They allow the user to select one or more of the following parameters:</p>
+<ul>
+<li>the State ,</li>
+<li>the industry (IT, Finance, ... or all),</li>
+<li>the type of housing (own or rented),</li>
+<li>if the whole population has to be considered, or only those between 20 and 34 (the age range where there are more people interested in changing jobs or getting one).</li>
+</ul>
+          
+          <p>The first visualization shows 2 maps by county. Changing the States to be shown automatically adapts the zoom level. The first map shows the number of jobs for a certain industry in a given county, per 1,000 people, and hence is a proxy of the number of opportunities in that industry. The user can also select if he or she wants to consider only young people (between 20 and 34), because that age range will be, in most cases, the likely competition. Counties are colored by number of jobs, from light red to light green, so green (which corresponds to higher values) is desirable.</p>
+          <p>The second map shows the housing cost in each county, filtered by mortgage or rent (in both cases the value represents the median amount in dollars for each county). This is an important detail when considering to accept a job offer/move to a new location. In this map the color range is reversed, so darker tones of green correspond to lower housing costs. This way, user can focus on green areas in both maps.</p>
+          
+<script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 654px; height: 769px;'><noscript><a href='#'><img alt='Dashboard 4 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;3W&#47;3WRT4469P&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='654' height='769' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='path' value='shared&#47;3WRT4469P' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;3W&#47;3WRT4469P&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showVizHome' value='no' /><param name='showTabs' value='y' /><param name='bootstrapWhenNotified' value='true' /></object></div>
+
+<p>Suppose you are considering job offers in different States (or just considering to move to them). The following visualization ranks the counties of all the States selected by the number of jobs per 1,000 people (again, considering the whole or only young population). Each State is assigned a different color, so a single glance can give a lot of information (for example, in the default view we can see that most of the Top 5 counties for IT are in Arkansas, Idaho has some counties in the Top 10, Alabama only has one, just below that, and most of the counties in Georgia rank between 10 and 20). The visualization shows by default the first 20 counties, but the user can move down if he or she is interested in a county that ranks lower. The chart bar on the right side shows the housing cost in each county (which in most cases is very dependent on the State). The user just has to hover the mouse over any of the bars to see the numerical values for a county.</p>
+
+<script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 654px; height: 669px;'><noscript><a href='#'><img alt='Dashboard 3 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;6Z&#47;6Z7DGTZW7&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='654' height='669' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='path' value='shared&#47;6Z7DGTZW7' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;6Z&#47;6Z7DGTZW7&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showVizHome' value='no' /><param name='showTabs' value='y' /><param name='bootstrapWhenNotified' value='true' /></object></div>
+
+<p>This next visualization shows the whisker-and-box plots for the mentioned variables: number of jobs per 1,000 people (young or not, and depending on the industry selected), median cost of mortgage or house rental, and additionally the percentage of young people (20 to 34) compared to the whole population: this can provide other information useful to the user (that can be complemented adding more age ranges), like the percentage of people in his or her age range (as mentioned, this tool is mainly aimed to people more likely to search for a new job, and hence in their twenties or thirties), not only in terms of competition but also of common interests.</p>
+
+<p>States are ordered by decreasing order of the median of the number of jobs per 1,000 people. Depending on where the user hovers the mouse, he or she will see the quartiles, median, etc., for a particular variable, or the average values of the 3 variables for a given State. If the user clicks the + symbol at the left of the x-axis, information for each county appears (this can be undone clicking on "Revert").</p>
+
+<script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 654px; height: 769px;'><noscript><a href='#'><img alt='Dashboard 5 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;BK&#47;BKH6RS979&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='654' height='769' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='path' value='shared&#47;BKH6RS979' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;BK&#47;BKH6RS979&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showVizHome' value='no' /><param name='showTabs' value='y' /><param name='bootstrapWhenNotified' value='true' /></object></div>
+
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/juanjocarin/W205_final/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/juanjocarin/W205_final/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/juanjocarin/W205_final"></a> is maintained by <a href="https://github.com/juanjocarin">juanjocarin</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong"> Jason Long</a>.</p>
+          <img src="images/UCB.png" width="200px"/>
+        </aside>
+      </div>
+    </div>
+
+
+  </body>
+</html>
